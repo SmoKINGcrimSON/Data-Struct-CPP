@@ -49,7 +49,13 @@ class List{
             size++;
         }
         void InsertAt(int index, T value){
-            //
+            if(index >= size) throw "Invalid index";
+            if(size >= capacity) Grow();
+            for(int i = size; i > index; i--){
+                array[i] = array[i - 1];
+            }
+            array[index] = value;
+            size++;
         }
         bool IsEmpty() const{
             return size == 0;
