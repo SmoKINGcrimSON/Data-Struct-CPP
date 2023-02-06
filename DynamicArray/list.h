@@ -20,7 +20,15 @@ class List{
             capacity = newCapacity;
         }
         void Shrink(){
-
+            int newCapacity = capacity / 2;
+            T* newArray = new T[newCapacity];
+            for(int i = 0; i < size; i++){
+                *(newArray + i) = *(array + i); 
+            }
+            delete array;
+            array = nullptr;
+            array = newArray;
+            capacity = newCapacity;
         }
     public:
         List(){
@@ -56,6 +64,22 @@ class List{
             }
             array[index] = value;
             size++;
+        }
+        void Remove(T value){
+            if(IsEmpty()) throw "The dynamic array is empty";
+            for(int i = 0; i < size; i++){
+                if(array[i] == value){
+                    for(int j = i; j < size - 1; j++){
+                        array[j] = array[j + 1];
+                    }
+                    array[size - 1] = 0;
+                    size--;
+                    if(size <= (capacity/3) && size >= 1){
+                        Shrink();
+                    }
+                    return;
+                }
+            }
         }
         bool IsEmpty() const{
             return size == 0;
