@@ -81,6 +81,15 @@ class List{
                 }
             }
         }
+        int LinearSearch(T Value){
+            if(IsEmpty()) return -1;
+            for(int i = 0; i < size; i++){
+                if(array[i] == Value){
+                    return i;
+                }
+            }
+            return -1;
+        }
         bool IsEmpty() const{
             return size == 0;
         }
