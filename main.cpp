@@ -1,21 +1,20 @@
 #include <iostream>
 #include "DynamicArray/list.h"
+#include "LinkedList/doublecirclelist.h"
 
 using namespace ExtraMethodsDynamicArray;
 
 int main(){
     
-    List<int>* nums = new List<int>();
+    DoubleCircleLinkedList<int>* nums = new DoubleCircleLinkedList<int>();
     try{
-        nums->Insert(123);
-        nums->Insert(333);
-        nums->Insert(444);
-        nums->InsertAt(0, 1);
-        nums->InsertAt(0, -123);
-        std::cout<<"Size: "<<nums->Size()<<std::endl;
-        std::cout<<"Capacity: "<<nums->Capacity()<<std::endl;
-        std::cout<<"Is empty: "<<nums->IsEmpty()<<std::endl;
-        std::cout<<*nums<<std::endl;
+        nums->InsertAtTheEnd(123);
+        nums->InsertAtFront(333);
+        nums->InsertAtFront(444);
+        std::cout<<"Print forward:"<<std::endl;
+        nums->PrintForward();
+        std::cout<<"Print backward:"<<std::endl;
+        nums->PrintBackward();
     }
     catch(const char* txtException){
         std::cout<<txtException<<std::endl;
