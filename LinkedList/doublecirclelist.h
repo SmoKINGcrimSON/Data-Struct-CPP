@@ -88,6 +88,38 @@ class DoubleCircleLinkedList{
             while(i != head);
             throw "The value doesn't exist in the double circle linked list.";
         }
+        void Remove(T value){
+            if(head == nullptr) throw "You can't remove element from and empty list.";
+            Node<T>* i = head;
+            do{
+                if(i->value == value){
+                    if(head == tail){
+                        head = nullptr;
+                        tail = head;
+                    }
+                    else if(head->value == value){
+                        head = head->next;
+                        tail->next = head;
+                        head->previous = tail;
+                    }
+                    else if(tail->value == value){
+                        tail = tail->previous;
+                        tail->next = head;
+                        head->previous = tail;
+                    }
+                    else{
+                        i->previous->next = i->next;
+                        i->next->previous = i->previous;
+                    }
+                    return;
+                }
+                else{
+                    i = i->next;
+                }
+            }
+            while(i != head);
+            throw "The value doesn't exist to be removed.";
+        }
         void PrintForward(){
             if(head == nullptr) throw "The double circle linked list is empty";
             Node<T>* i = head;
