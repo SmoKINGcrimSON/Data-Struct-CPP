@@ -11,6 +11,8 @@ int main(){
         nums->InsertAtTheEnd(123);
         nums->InsertAtFront(333);
         nums->InsertAtFront(444);
+        nums->InsertAfter(444, 7);
+        nums->InsertAfter(123, 5);
         std::cout<<"Print forward:"<<std::endl;
         nums->PrintForward();
         std::cout<<"Print backward:"<<std::endl;
