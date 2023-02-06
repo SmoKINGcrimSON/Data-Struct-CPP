@@ -120,6 +120,24 @@ class DoubleCircleLinkedList{
             while(i != head);
             throw "The value doesn't exist to be removed.";
         }
+        void BubbleSort(){
+            if(head == nullptr || head == tail) throw "There isn't enough elements to sort the list.";
+            Node<T>* i = head;
+            do{
+                Node<T>* j = head;
+                do{
+                    if(j->value > j->next->value){
+                        T temp = j->value;
+                        j->value = j->next->value;
+                        j->next->value = temp;
+                    }
+                    j = j->next;
+                }
+                while(j->next != head);
+                i = i->next;
+            }
+            while(i->next != head);
+        }
         void PrintForward(){
             if(head == nullptr) throw "The double circle linked list is empty";
             Node<T>* i = head;
