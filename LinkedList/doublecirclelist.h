@@ -64,6 +64,30 @@ class DoubleCircleLinkedList{
             while(i != head);
             throw "The value doesn't exist in the double circle linked list.";
         }
+        void InsertBefore(T value, T newValue){
+            if(head == nullptr) throw "The double circle linked list is empty.";
+            Node<T>* i = head;
+            do{
+                if(i->value == value){
+                    if(head->value == value){
+                        InsertAtFront(newValue);
+                    }
+                    else{
+                        Node<T>* newNode = new Node<T>(newValue);
+                        i->previous->next = newNode;
+                        newNode->previous = i->previous;
+                        i->previous = newNode;
+                        newNode->next = i;
+                    }
+                    return;
+                }
+                else{
+                    i = i->next;
+                }
+            }
+            while(i != head);
+            throw "The value doesn't exist in the double circle linked list.";
+        }
         void PrintForward(){
             if(head == nullptr) throw "The double circle linked list is empty";
             Node<T>* i = head;
