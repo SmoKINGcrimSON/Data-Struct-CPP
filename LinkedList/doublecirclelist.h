@@ -138,6 +138,18 @@ class DoubleCircleLinkedList{
             }
             while(i->next != head);
         }
+        bool Exist(T value){
+            if(head == nullptr) return false;
+            Node<T>* i = head;
+            do{
+                if(i->value == value){
+                    return true;
+                }
+                i = i->next;
+            }
+            while(i != head);
+            return false;
+        }
         void PrintForward(){
             if(head == nullptr) throw "The double circle linked list is empty";
             Node<T>* i = head;
