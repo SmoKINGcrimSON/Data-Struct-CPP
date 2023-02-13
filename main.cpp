@@ -27,6 +27,7 @@ int main(){
         std::cout<<"Max value of the BST: "<<nums->MaxValue()<<std::endl;
         std::cout<<"Height of the tree: "<<nums->Height()<<std::endl;
         std::cout<<"Number of leaves: "<<nums->Leaves()<<std::endl;
+        std::cout<<"Number of branches: "<<nums->Branches()<<std::endl;
         std::cout<<"Nodes print in-order:"<<std::endl;
         nums->PrintInOrder();
     }

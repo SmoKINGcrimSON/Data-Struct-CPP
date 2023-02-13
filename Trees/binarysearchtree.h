@@ -99,6 +99,15 @@ class BinarySearchTree{
             count += Leaves(&(*root)->right);
             return count;
         }
+        //number of branches
+        int Branches(TreeNode<T>** root){
+            if(*root == nullptr) return 0;
+            int count = 0;
+            if((*root)->left != nullptr || (*root)->right != nullptr) count++;
+            count += Leaves(&(*root)->left);
+            count += Leaves(&(*root)->right);
+            return count;
+        }
     public:
         BinarySearchTree(){
             root = nullptr;
@@ -147,6 +156,9 @@ class BinarySearchTree{
         //number of leaves
         int Leaves(){
             return Leaves(&root);
+        }
+        int Branches(){
+            return Branches(&root);
         }
 };
 
