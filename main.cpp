@@ -1,26 +1,21 @@
 #include <iostream>
 #include "DynamicArray/list.h"
 #include "LinkedList/doublecirclelist.h"
+#include "Trees/binarysearchtree.h"
 
 using namespace ExtraMethodsDynamicArray;
 
 int main(){
     
-    DoubleCircleLinkedList<int>* nums = new DoubleCircleLinkedList<int>();
-    try{
-        nums->InsertAtTheEnd(123);
-        nums->InsertAtFront(333);
-        nums->InsertAtFront(444);
-        nums->InsertAfter(444, 7);
-        nums->InsertAfter(123, 5);
-        std::cout<<"Print forward:"<<std::endl;
-        nums->PrintForward();
-        std::cout<<"Print backward:"<<std::endl;
-        nums->PrintBackward();
-    }
-    catch(const char* txtException){
-        std::cout<<txtException<<std::endl;
-    }
-    delete nums;
+    BinarySearchTree<int>* nums = new BinarySearchTree<int>();
+    nums->Insert(40);
+    nums->Insert(20);
+    nums->Insert(60);
+    nums->Insert(10);
+    nums->Insert(30);
+    nums->Insert(50);
+    nums->Insert(70);
+    nums->Insert(80);
+    nums->PrintInOrder();
     return 0;
 }
