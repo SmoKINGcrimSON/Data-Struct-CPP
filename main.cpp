@@ -17,12 +17,14 @@ int main(){
         nums->Insert(50);
         nums->Insert(70);
         nums->Insert(80);
+        nums->Insert(90);
         std::cout<<"Exist the number 30: "<<nums->Search(30)<<std::endl;
         std::cout<<"Exist the number 80: "<<nums->Search(80)<<std::endl;
         std::cout<<"Exist the number -10: "<<nums->Search(-10)<<std::endl;
         std::cout<<"Number of nodes of the tree: "<<nums->Size()<<std::endl;
         std::cout<<"Is the BST empty?: "<<nums->IsTreeEmpty()<<std::endl;
         std::cout<<"Min value of the BST: "<<nums->MinValue()<<std::endl;
+        std::cout<<"Max value of the BST: "<<nums->MaxValue()<<std::endl;
         std::cout<<"Nodes print in-order:"<<std::endl;
         nums->PrintInOrder();
     }

@@ -43,6 +43,11 @@ class BinarySearchTree{
             if((*root)->left == nullptr) return *root;
             else return MinNode(&(*root)->left);
         }
+        //Find the max node in the binary search tree
+        TreeNode<T>* MaxNode(TreeNode<T>** root){
+            if((*root)->right == nullptr) return *root;
+            else return MaxNode(&(*root)->right);
+        }
     public:
         BinarySearchTree(){
             root = nullptr;
@@ -72,6 +77,10 @@ class BinarySearchTree{
             if(IsTreeEmpty()) throw "You can't find the min value in an empty BST.";
             TreeNode<T>* min = MinNode(&root);
             return min->value;
+        }
+        T MaxValue(){
+            TreeNode<T>* max = MaxNode(&root);
+            return max->value;
         }
 };
 
