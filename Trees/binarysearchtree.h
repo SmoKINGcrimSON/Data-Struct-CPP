@@ -90,6 +90,15 @@ class BinarySearchTree{
             int right = Height(&(*root)->right);
             return left > right? left + 1 : right + 1;
         }
+        //number of leaves
+        int Leaves(TreeNode<T>** root){
+            if(*root == nullptr) return 0;
+            int count = 0;
+            if((*root)->left == nullptr && (*root)->right == nullptr) count++;
+            count += Leaves(&(*root)->left);
+            count += Leaves(&(*root)->right);
+            return count;
+        }
     public:
         BinarySearchTree(){
             root = nullptr;
@@ -134,6 +143,10 @@ class BinarySearchTree{
         //Height of the tree
         int Height(){
             return Height(&root);
+        }
+        //number of leaves
+        int Leaves(){
+            return Leaves(&root);
         }
 };
 
