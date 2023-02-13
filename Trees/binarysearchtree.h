@@ -82,7 +82,14 @@ class BinarySearchTree{
                 }
             }
             return *root;
-        } 
+        }
+        //Height of the tree
+        int Height(TreeNode<T>** root){
+            if(*root == nullptr) return -1;
+            int left = Height(&(*root)->left);
+            int right = Height(&(*root)->right);
+            return left > right? left + 1 : right + 1;
+        }
     public:
         BinarySearchTree(){
             root = nullptr;
@@ -123,6 +130,10 @@ class BinarySearchTree{
             if(IsTreeEmpty()) throw "You can't remove nodes of an empty tree.";
             root = Remove(&root, value);
             size--;
+        }
+        //Height of the tree
+        int Height(){
+            return Height(&root);
         }
 };
 

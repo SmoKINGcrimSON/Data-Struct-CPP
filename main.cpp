@@ -18,7 +18,6 @@ int main(){
         nums->Insert(70);
         nums->Insert(80);
         nums->Insert(90);
-        nums->Remove(60);
         std::cout<<"Exist the number 30: "<<nums->Search(30)<<std::endl;
         std::cout<<"Exist the number 60: "<<nums->Search(60)<<std::endl;
         std::cout<<"Exist the number -10: "<<nums->Search(-10)<<std::endl;
@@ -26,6 +25,7 @@ int main(){
         std::cout<<"Is the BST empty?: "<<nums->IsTreeEmpty()<<std::endl;
         std::cout<<"Min value of the BST: "<<nums->MinValue()<<std::endl;
         std::cout<<"Max value of the BST: "<<nums->MaxValue()<<std::endl;
+        std::cout<<"Height of the tree: "<<nums->Height()<<std::endl;
         std::cout<<"Nodes print in-order:"<<std::endl;
         nums->PrintInOrder();
     }
