@@ -27,6 +27,17 @@ class BinarySearchTree{
             std::cout<<(*root)->value<<std::endl;
             PrintInOrder(&(*root)->right);
         }
+        //Search the existence of an element in the tree
+        bool Search(TreeNode<T>** root, T value){
+            if(*root == nullptr) return false;
+            else if(value < (*root)->value){
+                return Search(&(*root)->left, value);
+            }
+            else if(value > (*root)->value){
+                return Search(&(*root)->right, value);
+            }
+            else return true;
+        }
     public:
         BinarySearchTree(){
             root = nullptr;
@@ -40,10 +51,16 @@ class BinarySearchTree{
         //Insert Node
         void Insert(T value){
             root = Insert(&root, value);
+            size++;
         }
         //In-order travel print
         void PrintInOrder(){
+            if(IsTreeEmpty()) throw "You can't print an empty BST.";
             PrintInOrder(&root);
+        }
+        //Search the existence of an element in the tree
+        bool Search(T value){
+            return Search(&root, value);
         }
 };
 
