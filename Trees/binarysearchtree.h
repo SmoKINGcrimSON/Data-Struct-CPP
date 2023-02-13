@@ -48,6 +48,41 @@ class BinarySearchTree{
             if((*root)->right == nullptr) return *root;
             else return MaxNode(&(*root)->right);
         }
+        //Remove a node from the BST
+        TreeNode<T>* Remove(TreeNode<T>** root, T value){
+            if(*root == nullptr) throw "The element you try to remove doesn't exist in the BST.";
+            //algorithm
+            if(value < (*root)->value){
+                (*root)->left = Remove(&(*root)->left, value);
+            }
+            else if(value > (*root)->value){
+                (*root)->right = Remove(&(*root)->right, value);
+            }
+            else{
+                if((*root)->left == nullptr && (*root)->right == nullptr){
+                    delete *root;
+                    *root = nullptr;
+                }
+                else if((*root)->left == nullptr){
+                    TreeNode<T>* temp = *root;
+                    *root = (*root)->right;
+                    delete temp;
+                    temp = nullptr;
+                }
+                else if((*root)->right == nullptr){
+                    TreeNode<T>* temp = *root;
+                    *root = (*root)->left;
+                    delete temp;
+                    temp = nullptr;
+                }
+                else{
+                    TreeNode<T>* temp = MinNode(&(*root)->right);
+                    (*root)->value = temp->value;
+                    (*root)->right = Remove(&(*root)->right, temp->value);
+                }
+            }
+            return *root;
+        } 
     public:
         BinarySearchTree(){
             root = nullptr;
@@ -78,9 +113,16 @@ class BinarySearchTree{
             TreeNode<T>* min = MinNode(&root);
             return min->value;
         }
+        //Find the max value in the binary search tree
         T MaxValue(){
             TreeNode<T>* max = MaxNode(&root);
             return max->value;
+        }
+        //Remove a node from the BST
+        void Remove(T value){
+            if(IsTreeEmpty()) throw "You can't remove nodes of an empty tree.";
+            root = Remove(&root, value);
+            size--;
         }
 };
 
