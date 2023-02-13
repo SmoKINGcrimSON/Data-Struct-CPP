@@ -38,6 +38,11 @@ class BinarySearchTree{
             }
             else return true;
         }
+        //Find the min node in the binary search tree
+        TreeNode<T>* MinNode(TreeNode<T>** root){
+            if((*root)->left == nullptr) return *root;
+            else return MinNode(&(*root)->left);
+        }
     public:
         BinarySearchTree(){
             root = nullptr;
@@ -61,6 +66,12 @@ class BinarySearchTree{
         //Search the existence of an element in the tree
         bool Search(T value){
             return Search(&root, value);
+        }
+        //Find the min value in the binary search tree
+        T MinValue(){
+            if(IsTreeEmpty()) throw "You can't find the min value in an empty BST.";
+            TreeNode<T>* min = MinNode(&root);
+            return min->value;
         }
 };
 
