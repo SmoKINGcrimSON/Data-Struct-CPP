@@ -1,6 +1,7 @@
 #ifndef SIMPLENODE_H
 #define SIMPLENODE_H
 #include <iostream>
+
 template<typename T>
 class SimpleNode{
     public:
@@ -12,6 +13,9 @@ class SimpleNode{
         SimpleNode(T value){
             this->value = value;
             this->next = nullptr;
+        }
+        ~SimpleNode(){
+            std::cout<<"SimpleNode deleted."<<std::endl;
         }
 };
 
