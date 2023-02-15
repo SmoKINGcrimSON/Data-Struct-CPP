@@ -17,7 +17,6 @@ class Queue{
             while(!IsEmpty()){
                 Dequeue();
             }
-            std::cout<<"Queue eliminated."<<std::endl;
         }
         int Size() const{
             return size;

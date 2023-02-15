@@ -1,6 +1,7 @@
 #ifndef BINARYSEARCHTREE_H
 #define BINARYSEARCHTREE_H
 #include "treenode.h"
+#include "../LinkedList/queue.h"
 
 template<class T>
 class BinarySearchTree{
@@ -128,6 +129,24 @@ class BinarySearchTree{
             if(IsTreeEmpty()) throw "You can't print an empty BST.";
             PrintInOrder(&root);
         }
+        //Lever travel print
+        void LevelPrint(){
+            TreeNode<T>* tempRoot = root;
+            Queue<TreeNode<T>*>* values = new Queue<TreeNode<T>*>();
+            values->Enqueue(tempRoot);
+            while(!values->IsEmpty()){
+                TreeNode<T>* temp = values->Top();
+                if(temp->left != nullptr){
+                    values->Enqueue(temp->left);
+                }
+                if(temp->right != nullptr){
+                    values->Enqueue(temp->right);
+                }
+                std::cout<<temp->value<<std::endl;
+                values->Dequeue();
+            }
+            delete values;
+        }
         //Search the existence of an element in the tree
         bool Search(T value){
             return Search(&root, value);
@@ -157,6 +176,7 @@ class BinarySearchTree{
         int Leaves(){
             return Leaves(&root);
         }
+        //number of branches
         int Branches(){
             return Branches(&root);
         }

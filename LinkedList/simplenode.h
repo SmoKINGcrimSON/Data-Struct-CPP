@@ -15,7 +15,6 @@ class SimpleNode{
             this->next = nullptr;
         }
         ~SimpleNode(){
-            std::cout<<"SimpleNode deleted."<<std::endl;
         }
 };
 
